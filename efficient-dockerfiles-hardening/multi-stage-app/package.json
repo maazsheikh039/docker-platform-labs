@@ -1,0 +1,16 @@
+{
+  "name": "multi-stage-app",
+  "version": "1.0.0",
+  "description": "Multi-stage Docker build example",
+  "main": "dist/app.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/app.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^18.0.0"
+  },
+  "author": "Docker Lab Student",
+  "license": "MIT"
+}

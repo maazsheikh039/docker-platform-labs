@@ -1,0 +1,11 @@
+{
+  "name": "simple-docker-app",
+  "version": "1.0.0",
+  "description": "A simple Node.js app for Docker demonstration",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Docker Lab Student",
+  "license": "MIT"
+}
