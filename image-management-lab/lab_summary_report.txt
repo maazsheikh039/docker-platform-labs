@@ -1,0 +1,15 @@
+Docker Image Management Lab - Summary Report
+==========================================
+
+Images Created:
+- nodejs-lab-app:latest (original, unoptimized)
+- nodejs-lab-app:optimized (with .dockerignore)
+- nodejs-lab-app:multistage (multi-stage build)
+- nodejs-lab-app:advanced (advanced multi-stage with security)
+
+Optimization Techniques Applied:
+1. .dockerignore file to exclude unnecessary files
+2. Multi-stage builds to separate build and runtime
+3. Alpine Linux base images for smaller size
+4. Non-root user for security
+5. Proper signal handling with dumb-init
