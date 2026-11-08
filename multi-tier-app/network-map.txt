@@ -1,0 +1,15 @@
+service=proxy
+  frontend-net  ip=  gateway=
+  backend-net   ip=  gateway=
+
+service=api
+  backend-net   ip=  gateway=
+  data-net      ip=  gateway=
+
+service=db
+  data-net      ip=  gateway=
+
+service=cache
+  data-net      ip=  gateway=
+
+dns-resolver=
