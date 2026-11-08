@@ -1,0 +1,27 @@
+# syntax=docker/dockerfile:1
+
+FROM node:18-alpine AS base
+WORKDIR /app
+
+FROM base AS prod-deps
+COPY package.json package-lock.json* ./
+RUN --mount=type=cache,target=/root/.npm     npm ci --only=production
+
+FROM base AS all-deps
+COPY package.json package-lock.json* ./
+RUN --mount=type=cache,target=/root/.npm     npm ci
+
+FROM all-deps AS test
+COPY . .
+RUN npm test || echo "Tests would run here"
+
+FROM all-deps AS build
+COPY . .
+RUN echo "Build process would run here"
+
+FROM base AS production
+COPY --from=prod-deps /app/node_modules ./node_modules
+COPY --from=build /app .
+
+EXPOSE 3000
+CMD ["npm", "start"]
