@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  data-prep-worker:
+    build: ./data-prep
+    container_name: data_prep_service
+    volumes:
+      - shared_data:/app/preprocessed_data
+
+  training-worker:
+    build: ./training
+    container_name: training_service
+    volumes:
+      - shared_data:/app/data
+      - model_results:/app/results
+    depends_on:
+      data-prep-worker:
+        condition: service_completed_successfully
+
+volumes:
+  shared_data:
+  model_results:
